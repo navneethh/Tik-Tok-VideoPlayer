@@ -52,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
         git.videoTitle ="Github new branch";
         git.videoDescription ="no pain no gain";
         videoItems.add(git);
+        //this is added from cloud github
+        VideoItem gitcloud=new VideoItem();
+        gitcloud.videoURL ="https://www.infinityandroid.com/videos/video2.mp4";
+        gitcloud.videoTitle ="Github from the cloud";
+        gitcloud.videoDescription ="no pain no gain";
+        videoItems.add(gitcloud);
 
 
         VideoItem nature=new VideoItem();
