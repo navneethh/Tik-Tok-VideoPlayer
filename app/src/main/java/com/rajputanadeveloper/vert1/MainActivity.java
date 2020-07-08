@@ -47,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         exercise.videoDescription ="no pain no gain";
         videoItems.add(exercise);
 
+        VideoItem git=new VideoItem();
+        git.videoURL ="https://www.infinityandroid.com/videos/video1.mp4";
+        git.videoTitle ="Github new branch";
+        git.videoDescription ="no pain no gain";
+        videoItems.add(git);
+
 
         VideoItem nature=new VideoItem();
         nature.videoURL ="https://www.infinityandroid.com/videos/video4.mp4";
