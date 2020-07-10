@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rajputanadeveloper.vert1.Fragment.home_fragment;
 import com.rajputanadeveloper.vert1.Fragment.notif_fragment;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView=findViewById(R.id.bottom_navi);
-        bottomNavigationView.setOnNavigationItemReselectedListener(nagationItemSelectedListener);
+        bottomNavigationView.setOnNavigationItemSelectedListener(nagationItemSelectedListener);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,new home_fragment()).commit();
 
@@ -40,17 +41,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private BottomNavigationView.OnNavigationItemReselectedListener nagationItemSelectedListener=
-            new BottomNavigationView.OnNavigationItemReselectedListener() {
+    private BottomNavigationView.OnNavigationItemSelectedListener nagationItemSelectedListener=
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                /**
+                 * Called when an item in the bottom navigation menu is selected.
+                 *
+                 * @param item The selected item
+                 * @return true to display the item as the selected item and false if the item should not be
+                 * selected. Consider setting non-selectable items as disabled preemptively to make them
+                 * appear non-interactive.
+                 */
                 @Override
-                public void onNavigationItemReselected(@NonNull MenuItem item) {
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    BottomNavigationView b=findViewById(R.id.bottom_navi);
+                    AppBarLayout t=findViewById(R.id.bottomm);
                     switch(item.getItemId()){
                         case R.id.nav_home:
                             selected=new home_fragment();
+
+                            t.setBackgroundColor(getColor(R.color.transparent));
+
+                            b.setBackgroundColor(getColor(R.color.transparent));
                             break;
 
                         case R.id.nav_notif:
                             selected=new notif_fragment();
+                            b.setBackgroundColor(000000);
+                            t.setBackgroundColor(000000);
                             break;
                         case R.id.nav_profile:
 
@@ -65,7 +82,10 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.Fragment_container,selected).commit();
                     }
 
+                    return true;
                 }
+
+
             };
 
 }
